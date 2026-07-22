@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guessing Game OS</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts for a clean, modern UI -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <!-- SIDEBAR NAVIGATION -->
+    <nav class="sidebar">
+      <div class="logo">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        Guess OS
+      </div>
+
+      <div class="nav-links">
+        <button class="nav-btn active" data-target="view-dashboard">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Dashboard
+        </button>
+        <button class="nav-btn" data-target="view-play">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Play Game
+        </button>
+        <button class="nav-btn" data-target="view-stats">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 20V10"></path>
+            <path d="M18 20V4"></path>
+            <path d="M6 20v-4"></path>
+          </svg>
+          Statistics
+        </button>
+        <button class="nav-btn" data-target="view-achievements">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline
+              points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
+            ></polyline>
+          </svg>
+          Achievements
+        </button>
+        <button class="nav-btn" data-target="view-settings">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+            ></path>
+          </svg>
+          Settings
+        </button>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+      <!-- 1. DASHBOARD VIEW -->
+      <section id="view-dashboard" class="view-section active">
+        <div class="card">
+          <div class="profile-header">
+            <div>
+              <h2>Welcome back, Player.</h2>
+              <p>Here is your current progression status.</p>
+            </div>
+            <div class="rank-badge" id="dash-rank">Novice</div>
+          </div>
+
+          <div class="xp-container">
+            <div class="xp-header">
+              <span id="dash-level">Level 1</span>
+              <span id="dash-xp">0 / 100 XP</span>
+            </div>
+            <div class="xp-bar-bg">
+              <div class="xp-bar-fill" id="dash-xp-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="stat-box">
+            <div class="stat-value" id="dash-wins">0</div>
+            <div class="stat-label">Total Wins</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="dash-winrate">0%</div>
+            <div class="stat-label">Win Rate</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="dash-streak">0</div>
+            <div class="stat-label">Best Streak</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center">
+          <button
+            class="btn-primary nav-btn"
+            data-target="view-play"
+            style="
+              width: 100%;
+              justify-content: center;
+              max-width: 300px;
+              margin: 0 auto;
+            "
+          >
+            START PLAYING
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. PLAY GAME VIEW -->
+      <section id="view-play" class="view-section">
+        <div class="game-arena">
+          <div class="game-container card">
+            <h2 style="margin-bottom: 5px">Guess The Number</h2>
+            <p style="margin-bottom: 30px" id="game-range-text">
+              Range: 1 to 100
+            </p>
+
+            <div class="feedback-box" id="game-feedback">
+              Waiting for your first move...
+            </div>
+
+            <input
+              type="number"
+              id="game-input"
+              class="huge-input"
+              placeholder="?"
+              min="1"
+              max="100"
+            />
+
+            <button class="btn-primary" id="game-btn" style="width: 100%">
+              SUBMIT GUESS
+            </button>
+
+            <div class="history-tray" id="game-history">
+              <!-- History chips populate here -->
+            </div>
+          </div>
+          <div
+            style="margin-top: 15px; color: var(--text-muted); font-weight: 600"
+          >
+            Attempts this round: <span id="game-attempts">0</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. STATISTICS VIEW -->
+      <section id="view-stats" class="view-section">
+        <h2>Detailed Statistics</h2>
+        <p style="margin-bottom: 30px">Your lifetime performance metrics.</p>
+
+        <div class="card grid-2">
+          <div class="stat-box">
+            <div class="stat-value" id="stat-total-games">0</div>
+            <div class="stat-label">Games Played</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="stat-total-guesses">0</div>
+            <div class="stat-label">Total Guesses Made</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="stat-avg-guesses">0.0</div>
+            <div class="stat-label">Avg Guesses per Win</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="stat-flawless">0</div>
+            <div class="stat-label">Flawless Wins (≤ 5)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. ACHIEVEMENTS VIEW -->
+      <section id="view-achievements" class="view-section">
+        <h2>Achievement Showcase</h2>
+        <p style="margin-bottom: 30px">
+          Unlock these by playing and improving your skills.
+        </p>
+
+        <div class="achievement-grid" id="achievements-container">
+          <!-- Generated by JS -->
+        </div>
+      </section>
+
+      <!-- 5. SETTINGS VIEW -->
+      <section id="view-settings" class="view-section">
+        <h2>System Settings</h2>
+        <p style="margin-bottom: 30px">Customize your OS experience.</p>
+
+        <div class="card">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 24px;
+              border-bottom: 1px solid var(--border-color);
+              padding-bottom: 24px;
+            "
+          >
+            <div>
+              <h3>Dark Mode</h3>
+              <p>Switch between light and dark UI themes.</p>
+            </div>
+            <button class="btn-secondary" id="toggle-theme">
+              Toggle Theme
+            </button>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <div>
+              <h3>Reset Save Data</h3>
+              <p style="color: var(--danger)">
+                Warning: This will wipe all stats and achievements.
+              </p>
+            </div>
+            <button
+              class="btn-secondary"
+              id="reset-data"
+              style="color: var(--danger); border-color: var(--danger)"
+            >
+              Hard Reset
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
