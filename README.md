@@ -1,14 +1,13 @@
 # Guessing Game OS
 
+## 🔗 Important Links
+
+- **Live Website:** [anyguesses.netlify.app](https://anyguesses.netlify.app/)
+
 ![Guessing Game OS Screenshot]<img width="1917" height="1082" alt="Screenshot 2026-07-23 034227" src="https://github.com/user-attachments/assets/de66c154-4d2b-4a61-8cdc-98ccea200df3" />
 
 
 A sleek, modern web-based guessing game designed with an operating system (OS) style interface. Test your intuition by guessing the secret number while tracking your stats, leveling up, and unlocking achievements!
-
-## 🔗 Important Links
-
-- **Live Website:** [anyguesses.netlify.app](https://anyguesses.netlify.app/)
--
 
 ## 🚀 Features
 
